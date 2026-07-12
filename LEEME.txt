@@ -1,0 +1,66 @@
+YT MUSIC TRACKER - COMPILAR EN AIDE (SOLO DESDE EL CELULAR)
+=============================================================
+
+QUE HACE
+--------
+App Android nativa que lee la sesion real de reproduccion de YouTube
+Music (usando NotificationListenerService + MediaSession de Android) y
+va guardando, en vivo y de forma continua, el tiempo real escuchado por
+cancion y por artista. No usa tu cuenta de Google ni internet: lee
+directamente lo que esta sonando en tu telefono.
+
+PASOS
+-----
+1. Instalar "AIDE - IDE para Android Java C++" desde Play Store
+   (el desarrollo es gratis; algunas funciones extra son pagas, pero no
+   las necesitas para esto).
+
+2. Descomprimir este ZIP en tu celular. Cualquier app de archivos con
+   "Extraer aqui" sirve (o Google Files, ZArchiver, etc). Va a quedar una
+   carpeta llamada "ytmusic-native-tracker".
+
+3. Abrir AIDE > "Open Project" (o el icono de carpeta) > navegar hasta
+   la carpeta "ytmusic-native-tracker" (la que tiene el archivo
+   build.gradle adentro) y abrirla como proyecto.
+
+4. AIDE va a sincronizar el proyecto (puede tardar la primera vez porque
+   descarga el SDK/Gradle si no lo tiene). Dejalo terminar.
+
+5. Tocar el boton de "Run" (play) en AIDE. Te va a pedir instalar la app
+   en tu celular -> aceptar.
+
+6. Abrir la app "YT Music Tracker" ya instalada. Tocar el boton
+   "Activar acceso a notificaciones" -> en la pantalla de Android que se
+   abre, buscar "YT Music Tracker Service" y activarlo.
+
+7. Abrir YouTube Music y reproducir algo. La app queda corriendo sola en
+   segundo plano (vas a ver una notificacion fija "YT Music Tracker" con
+   la cancion actual).
+
+DONDE QUEDAN LOS DATOS
+-----------------------
+Carpeta: Android/data/com.example.ytmusictracker/files/
+
+Archivos:
+- tiempo_por_cancion.csv    -> segundos totales por cancion
+- tiempo_por_artista.csv    -> segundos totales por artista
+- log_reproducciones.csv    -> cada cambio de cancion con hora exacta
+
+Se van actualizando solos cada 15 segundos mientras hay musica sonando,
+y tambien al pausar/cambiar de cancion. Podes copiarlos con cualquier
+gestor de archivos, o abrirlos directo con una app de hojas de calculo.
+
+SI ALGO NO COMPILA
+-------------------
+- Si AIDE se queja de "SDK not found" o similar, abrir AIDE, ir a su
+  menu de SDK Manager (icono de Android en la barra) y dejar que baje
+  el "Android SDK 30" / build-tools que pida. Necesita internet la
+  primera vez.
+- Si tira error de "google()" o repositorios, verificar que el celular
+  tenga internet en ese momento (solo hace falta la primera vez, para
+  bajar las dependencias).
+
+NOTA
+----
+Esta app es de uso personal, corre 100% local en tu telefono, no manda
+datos a ningun lado.
